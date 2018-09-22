@@ -204,9 +204,10 @@ footer p {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    margin-top:50px;
-    
-    display: none;
+    margin-top:100px;
+}
+.sashInputError {
+    border:1px solid #e74c3c;
 }
 
 @media screen and (max-width:1900px) {
@@ -226,7 +227,18 @@ footer p {
         position: relative;
     }
     .box {
-        width: 500px;
+        width: 650px;
+        display: flex;
+        flex-direction: column;
+    }
+}
+@media screen and (max-width:1300px) {
+    
+    footer {
+        position: relative;
+    }
+    .box {
+        width: 600px;
         display: flex;
         flex-direction: column;
     }
