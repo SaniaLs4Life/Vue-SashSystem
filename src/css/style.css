@@ -1,0 +1,273 @@
+@import url('https://fonts.googleapis.com/css?family=Comfortaa');
+*{
+    margin:0;
+    padding:0;
+    font-family: 'Comfortaa';
+    box-sizing: border-box;
+    user-select: none;
+}
+header {
+    background:#333;
+    color:#FFF;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    background-image: linear-gradient(-20deg, #2b5876 0%, #4e4376 100%);
+
+}
+form {
+    margin-top:60px;
+}
+section {
+    width:100%;
+    height:auto;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-items: center;
+    flex-direction: row;
+}
+select {
+    background: #ecf0f1;
+    color:#333;
+    border-radius:3px;
+    outline:none;
+    cursor: pointer;
+}
+footer { 
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(-20deg, #2b5876 0%, #4e4376 100%);
+    padding:30px;
+    color:#FFF;
+    height:100px;
+    margin-top:25px;
+    text-align: center;
+    position: fixed;
+    bottom:0;
+    font-size:14px;
+}
+.insta {
+    margin-top:5px;
+}
+.twitter {
+    margin-left:10px;
+}
+.logo {
+    width: 10%;
+    font-weight: bold;
+    font-size: 26px;
+    padding: 16px 40px;
+    text-align: center;
+    position: relative;
+
+}
+.logo p {
+    width:265px;
+}
+.logo svg {
+    flex-direction: column;
+    align-content: center;
+    position: absolute;
+    top:10px;
+    left:70px;
+    
+    
+}
+.logo a {
+    text-decoration: none;
+    color:#FFF;
+    margin-left:12px;
+    
+}
+nav {
+    width: 90%;
+
+}
+nav ul {
+    display: flex;
+    justify-content: flex-end;
+    margin-right:25px;
+}
+nav ul li{
+    list-style-type: none;
+    color:#FFF;
+    font-size:14px;
+    cursor: pointer;
+    padding:15px;
+    border-radius: 5px;
+    outline:none;
+    text-decoration: none;
+    
+}
+footer a {
+    color:#FFF;
+
+}
+footer p {
+    margin-top:15px;
+}
+.isActive {
+    background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+    font-weight: bold;
+    color:#000;
+}
+
+.box { 
+    width: 900px;
+    height: 710px;
+    margin: 25px 0 auto;
+    border:1px solid #DDD;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.sashDetail ul li {
+    list-style-type: none;
+    padding:15px;
+    border-bottom:1px solid #FFF;
+    border-radius: 3px;
+    margin-left:5px;
+    background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);
+    font-weight: bold;
+    width:100%;
+}
+.title {
+    widows: 700px;
+    background-image: linear-gradient(-20deg, #2b5876 0%, #4e4376 100%);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:20px;
+    color:#FFF;
+    font-weight: bold;
+}
+.features {
+    padding:20px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+#sashFeatures {
+    display: flex;
+    flex-direction: column;
+    margin-top:130px;
+}
+.sashInput {
+    padding:15px;
+    width:90%;
+    outline:none;
+    border:none;
+    border:1px solid #EEE;
+    border-radius:3px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+.sashButton {
+    padding:15px;
+    width:235px;
+    outline:none;
+    border:none;
+    border-radius: 3px;
+    background:#FFF;
+    font-weight: bold;
+    cursor: pointer;
+    background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+}
+.strengthContainer {
+    display: flex;
+    
+    flex-direction: wrap;
+}
+.strength {
+    width:20%;
+    border:1px solid #000;
+    padding:15px;
+    margin:auto;
+    margin-bottom:15px;
+
+    display: flex;
+}
+.sashError {
+    color:#e74c3c;
+    font-weight: bold;
+}
+.sashDetail {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top:50px;
+    
+    display: none;
+}
+
+@media screen and (max-width:1900px) {
+    
+    footer {
+        position: relative;
+    }
+    .box {
+        width: 700px;
+        display: flex;
+        flex-direction: column;
+    }
+}
+@media screen and (max-width:1400px) {
+    
+    footer {
+        position: relative;
+    }
+    .box {
+        width: 500px;
+        display: flex;
+        flex-direction: column;
+    }
+}
+@media screen and (max-width:1000px) {
+    .logo { 
+        text-align: center;
+        width:100%;
+    }
+    .logo svg {
+        width:10%;
+        text-align: center;
+    }
+    .box {
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+    }
+    nav { 
+        width: 100%;
+    }
+    nav ul { 
+        justify-content: space-around;        
+        margin-bottom:15px;
+    }
+    nav ul li a { 
+        width:20%;
+        padding: 7px;
+        text-align: center;
+
+    }
+    .sash3 {
+        width:200px;
+        height:250px;
+    }
+    .sashDetail ul li {
+        font-size:11px;
+    }
+    .sashFeatures {
+        width: 200px;
+        height:300px;
+        margin-left:50px;
+    }
+}
