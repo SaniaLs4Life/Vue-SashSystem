@@ -1,5 +1,4 @@
-# sashcalculator
-
+# SASH CALCULATOR
 > Sash Calculator
 
 ## Build Setup
