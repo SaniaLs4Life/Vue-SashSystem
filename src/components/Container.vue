@@ -38,8 +38,7 @@
                         </select><br>
                         <!-- SASH RATE LIST ENDS-->
 
-                        <input type="text" :class="{ 'sashInputError' : error }" class="sashInput" v-if="feats" v-model="avgDamage" placeholder="Ortalama Zarar"><br />
-                        <input type="text" class="sashInput" v-if="feats" v-model="skillBec" placeholder="Beceri Hasarı"><br />
+                        <input type="text" :class="{ 'sashInputError' : error }" class="sashInput" v-if="feats" v-model="avgDamage" placeholder="Ort. Zarar veya Bec. Hasarı"><br />
                         <input type="text" class="sashInput" v-model="firstFeat" placeholder="1. Efsun Oranı"><br />
                         <input type="text" class="sashInput" v-model="secondFeat" placeholder="2. Efsun Oranı"><br />
                         <input type="text" class="sashInput" v-model="thirdFeat" placeholder="3. Efsun Oranı"><br />
@@ -63,8 +62,7 @@
                             <li>Saldırı hızı +%{{ attackSpeed }} </li>       
                             <li v-if="kyanitFeat">Yarı İnsanlara Karşı Güçlü +{{ newKyanitHalfHuman }}</li>
                             <li v-if="kyanitFeat">Canavarlara Karşı Güçlü +{{ newKyanitMonster }}</li>
-                            <li v-if="feats">Ortalama Zarar %{{ newAvgDamage }}</li>
-                            <li v-if="feats">Beceri Hasarı %{{ newSkillBec }}</li>
+                            <li v-if="feats">Ort. Zarar veya Bec. Hasarı %{{ newAvgDamage }}</li>
                             <li v-if="plusFeat">Kritik Vuruş Şansı +%{{ newCriticChange }}</li>
                             <li v-if="plusFeat">Saldırı Değeri +%{{ newAttackValuePlus }}</li>
                             <li>1. Efsun Oranı +{{ newFirstFeat }}</li>
@@ -86,7 +84,6 @@ export default {
             sashRate: null,
             bowList: null,
             avgDamage: null,
-            skillBec: null,
             firstFeat: null,
             secondFeat: null,
             thirdFeat: null,
@@ -104,7 +101,6 @@ export default {
             newCriticChange: null,
             newAttackValuePlus: null,
             newAvgDamage: null,
-            newSkillBec: null,
             newFirstFeat: null,
             newSecondFeat: null,
             newThirdFeat: null,
@@ -156,7 +152,7 @@ export default {
     methods: {
         showSashAndBow() {
             if(this.sashRate && this.bowList) {
-                if(this.bowList === 'gby' || this.bowList == 'fe' || this.bowList == 'hcy' || this.bowList == 'zy'  && this.avgDamage > 0) {
+                if(this.bowList === 'gby' || this.bowList == 'fe' || this.bowList == 'hcy' || this.bowList == 'zy') {
                     this.sashFeat = true
                     this.noSash = false
                     this.error = false
@@ -176,25 +172,57 @@ export default {
         },
         sashCalculator() {
             this.newAvgDamage = Math.floor(this.avgDamage * this.sashRate / 100)
-            this.newSkillBec = Math.floor(this.skillBec * this.sashRate / 100)
             this.newFirstFeat = Math.floor(this.firstFeat * this.sashRate / 100)
             this.newSecondFeat = Math.floor(this.secondFeat * this.sashRate / 100)
             this.newThirdFeat = Math.floor(this.thirdFeat * this.sashRate / 100)
-            if(this.avgDamage > 5) {
-                this.newSkillBec = 1
-            }else {
-                this.newSkillBec = Math.floor(this.skillBec * this.sashRate / 100)
-            }
         }
     },
     watch: {
         sashRate() {
             this.newAvgDamage = Math.floor(this.avgDamage * this.sashRate / 100)
-            if(this.avgDamage > 5) {
-                this.newSkillBec = 1
-            }else {
-                this.newSkillBec = Math.floor(this.skillBec * this.sashRate / 100)
+            if(this.bowList === 'gby') {
+                this.newAttackValue = Math.floor(this.geyikBoynuz.attack1 * this.sashRate / 100)
+                this.newAttackValue2 = Math.floor(this.geyikBoynuz.attack2 * this.sashRate / 100)
+                this.attackSpeed = Math.floor(this.geyikBoynuz.attackSpeed * this.sashRate / 100)
             }
+            if(this.bowList === 'fe') {
+                this.newAttackValue = Math.floor(this.firtinaYay.attack1 * this.sashRate / 100) - 14
+                this.newAttackValue2 = Math.floor(this.firtinaYay.attack2 * this.sashRate / 100)
+                this.attackSpeed = Math.floor(this.firtinaYay.attackSpeed * this.sashRate / 100)
+                this.newCriticChange = Math.floor(this.firtinaYay.criticChance * this.sashRate / 100)
+                this.newAttackValuePlus = Math.floor(this.firtinaYay.attackValuePlus * this.sashRate / 100) - 2
+            }
+            if(this.bowList === 'hcy') {
+                this.newAttackValue = Math.floor(this.havaliCelik.attack1 * this.sashRate / 100) 
+                this.newAttackValue2 = Math.floor(this.havaliCelik.attack2 * this.sashRate / 100)
+                this.attackSpeed = Math.floor(this.havaliCelik.attackSpeed * this.sashRate / 100)
+            }
+            if(this.bowList === 'ay') {
+                this.newAttackValue = Math.floor(this.ankaYay.attack1 * this.sashRate / 100)
+                this.newAttackValue2 = Math.floor(this.ankaYay.attack2 * this.sashRate / 100)
+                this.attackSpeed = Math.floor(this.ankaYay.attackSpeed * this.sashRate / 100)
+            }
+            if(this.bowList === 'zy') {
+                this.newAttackValue = Math.floor(this.zodyakYay.attack1 * this.sashRate / 100)
+                this.newAttackValue2 = Math.floor(this.zodyakYay.attack2 * this.sashRate / 100)
+                this.attackSpeed = Math.floor(this.zodyakYay.attackSpeed * this.sashRate / 100)
+            }
+            if(this.bowList === 'ky') {
+                this.newAttackValue = Math.floor(this.kyanitYay.attack1 * this.sashRate / 100)
+                this.newAttackValue2 = Math.floor(this.kyanitYay.attack2 * this.sashRate / 100)
+                this.attackSpeed = Math.floor(this.kyanitYay.attackSpeed * this.sashRate / 100)
+                this.newKyanitHalfHuman = Math.floor(this.kyanitYay.halfHuman * this.sashRate / 100)
+                this.newKyanitMonster = Math.floor(this.kyanitYay.monster * this.sashRate / 100)
+                this.newFirstFeat = Math.floor(this.firstFeat * this.sashRate / 100)
+                this.newSecondFeat = Math.floor(this.secondFeat * this.sashRate / 100)
+                this.newThirdFeat = Math.floor(this.thirdFeat * this.sashRate / 100)
+            }
+
+
+
+            
+        
+            
         },
         bowList() {
             if(this.bowList === 'gby') {
